@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_test_name": {
+            "value": null
+        },
+        "networkInterfaces_test620_name": {
+            "value": null
+        },
+        "publicIPAddresses_test_ip_name": {
+            "value": null
+        },
+        "networkSecurityGroups_test_nsg_name": {
+            "value": null
+        },
+        "virtualNetworks_testresource_vnet_name": {
+            "value": null
+        },
+        "storageAccounts_testresourcediag237_name": {
+            "value": null
+        },
+        "subnets_default_name": {
+            "value": null
+        },
+        "disks_test_OsDisk_1_038c4f9ba6fa4cffb4f9eec747761efb_name": {
+            "value": null
+        },
+        "securityRules_default_allow_ssh_name": {
+            "value": null
+        }
+    }
+}
