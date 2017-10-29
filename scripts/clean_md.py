@@ -4,7 +4,7 @@
 import sys
 
 if len(sys.argv) != 3:
-    print("Usage: python clean_md.py [raw_md_file] [clean_md_file_location")
+    print("Usage: python clean_md.py [raw_md_file] [clean_md_file_location]")
     exit()
 
 # TESTS_PATH = os.pardir(".") + "/tests/"
@@ -26,7 +26,12 @@ try:
             if line.startswith("[//]: #"):  # comment indicator required
                 comment_line = line.split("[//]: #", 1)[1]
                 if comment_line != "":
-                    clean_lines.append(comment_line)
+                    comment_line_clean = comment_line.strip()
+                    #  print(comment_line_clean)
+                    if (comment_line_clean.startswith('(') and
+                        comment_line_clean.endswith(')')):
+                        clean_lines.append(
+                                comment_line_clean[1:-1])
 except IOError:
     print("Unable to open .md file")
 
@@ -34,7 +39,7 @@ except IOError:
 try:
     with open(clean_md_file_location + "/" + clean_md_file, "w") as f:
         for line in clean_lines:
-            f.write(line)
+            f.write(line + "\n")
 
 except IOError:
     print("Error: unable to write clean .md file")
