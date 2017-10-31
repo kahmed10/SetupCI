@@ -29,9 +29,8 @@ try:
                     comment_line_clean = comment_line.strip()
                     #  print(comment_line_clean)
                     if (comment_line_clean.startswith('(') and
-                        comment_line_clean.endswith(')')):
-                        clean_lines.append(
-                                comment_line_clean[1:-1])
+                            comment_line_clean.endswith(')')):
+                        clean_lines.append(comment_line_clean[1:-1])
 except IOError:
     print("Unable to open .md file")
 

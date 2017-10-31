@@ -15,6 +15,7 @@ int main(int argc, char* argv[])
         return -1;
 	}
 
+    // TODO: make scalable to any OS
     UbuntuCall ubuntuCaller;
     string line;
     vector<string> fileList;
