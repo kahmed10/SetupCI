@@ -19,6 +19,11 @@ protected:
     vector<string> commands;
 };
 
+class UnixCall : public CICall
+{
+public:
+    UnixCall();
+};
 
 class UbuntuCall : public CICall
 {

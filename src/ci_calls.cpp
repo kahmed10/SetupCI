@@ -27,6 +27,12 @@ vector<string> CICall::GetCommands()
 	return commands;
 }
 
+UnixCall::UnixCall()
+{
+    regexCI = "\\s*(CI_RUN_UNIX\\(.*\\))";
+    regCI = regex(regexCI);
+}
+
 UbuntuCall::UbuntuCall()
 {
 	regexCI = "\\s*(CI_RUN_UBUNTU\\(.*\\))";
