@@ -10,10 +10,12 @@ class CICall
 public:
 	CICall();
     void Search(string str);
+    string GetIdentifier();
     vector<string> GetCommands();
 protected:
 	string regexCI;
 	string regexParen;
+    string identifier;
     regex regCI, regParen;
     smatch sm, smParen;
     vector<string> commands;

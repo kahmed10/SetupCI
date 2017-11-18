@@ -22,6 +22,11 @@ void CICall::Search(string str)
     }
 }
 
+string CICall::GetIdentifier()
+{
+    return identifier;
+}
+
 vector<string> CICall::GetCommands()
 {
 	return commands;
@@ -31,17 +36,19 @@ UnixCall::UnixCall()
 {
     regexCI = "\\s*(CI_RUN_UNIX\\(.*\\))";
     regCI = regex(regexCI);
+    identifier = "unix";
 }
 
 UbuntuCall::UbuntuCall()
 {
 	regexCI = "\\s*(CI_RUN_UBUNTU\\(.*\\))";
 	regCI = regex(regexCI);
-
+    identifier = "ubuntu";
 }
 
 MacOSCall::MacOSCall()
 {
 	regexCI = "\\s*(CI_RUN_MACOS\\(.*\\))";
 	regCI = regex(regexCI);
+    identifier = "macos";
 }

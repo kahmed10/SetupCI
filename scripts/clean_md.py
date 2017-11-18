@@ -37,8 +37,10 @@ except IOError:
 # write the clean file
 try:
     with open(clean_md_file_location + "/" + clean_md_file, "w") as f:
+        print("%s/%s" % (clean_md_file_location, clean_md_file))
         for line in clean_lines:
             f.write(line + "\n")
+
 
 except IOError:
     print("Error: unable to write clean .md file")

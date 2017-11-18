@@ -3,11 +3,15 @@
 #include <fstream>
 #include <iostream>
 #include <regex>
+#include <stdlib.h>
 #include <unordered_set>
 #include <vector>
 
+#define MD_CLEAN_OFF 9 // supporting MD files for now
 
 using namespace std;
+
+static const string intFilePath = "/int/commands/";
 
 static const string osSupported[] =
 {
@@ -15,6 +19,20 @@ static const string osSupported[] =
     "ubuntu",
     "macos"
     };
+
+
+// used to get the final app name after removing other directories
+string getLastItem(string s)
+{
+    int pos = s.find('/');
+    while (pos != string::npos)
+    {
+        pos = s.find('/');
+        s.erase(0,pos + 1); // plus 1 for delimiter
+    }
+    return s;
+}
+
 
 int main(int argc, char* argv[])
 {
@@ -26,8 +44,7 @@ int main(int argc, char* argv[])
         cout << "unix ubuntu macos" << endl;
         return -1;
 	}
-    else
-        cout << argc << endl;
+
     // Create list of supported OS;
     unordered_set<string> osList;
     for (auto os : osSupported)
@@ -47,7 +64,23 @@ int main(int argc, char* argv[])
     string line;
     vector<string> fileList;
    
-    ifstream inFile(argv[1]);
+    string cleanFile(argv[1]);
+    ifstream inFile(cleanFile);
+
+    // get the original file name
+    string origFile = getLastItem(cleanFile);
+    origFile = origFile.erase(origFile.size()-MD_CLEAN_OFF, origFile.size() - 1);
+
+
+
+    auto setupCIPath = getenv ("SETUP_CI");
+    // if (setupCIPath != NULL)
+    //     cout << "setupCIPath = " << setupCIPath << endl;
+    if (setupCIPath == NULL)
+    {
+        cout << "Error: path not set up correctly. Run ./install.sh" << endl;
+        return -1;
+    }
 
     if (inFile.is_open())
     {
@@ -60,7 +93,7 @@ int main(int argc, char* argv[])
 
     else
     {
-        cout << "Error: Unable to open file: " << argv[1] << endl;
+        cout << "Error: Unable to open file: " << cleanFile << endl;
         return -1;
     }
 
@@ -69,7 +102,6 @@ int main(int argc, char* argv[])
     // build command files based on supported OS
     for (int i = 2; i < argc; i++)
     {
-        cout << argv[i] << endl;
         CICall* caller = NULL;
         if (!strncmp(argv[i],"unix",5))
             caller = new UnixCall();
@@ -82,6 +114,8 @@ int main(int argc, char* argv[])
 
     // go through each API call in file
     vector<string> results;
+
+
     for (auto caller : callers)
     {
         for (auto entry: fileList)
@@ -89,9 +123,29 @@ int main(int argc, char* argv[])
             caller->Search(entry);            
         }
         results = caller->GetCommands();
-        for (auto result: results)
-            cout << result << endl;
-        cout << "***" << endl;
+
+        if (results.size() != 0)
+        {
+            string outName = setupCIPath + intFilePath + origFile + 
+                "_" + caller->GetIdentifier() + "_commands.txt";
+            cout << outName << endl;
+            ofstream outFile;
+            outFile.open(outName);
+
+            if (outFile.is_open())
+            {
+                for (auto result: results)
+                {
+                    //cout << result << endl; DEBUGGING
+                    outFile << result << endl;
+                }
+            }
+            else
+                cout << "Error in opening output file" << endl;
+            outFile.close();
+        }
+        
+            
     }
     
 

@@ -7,3 +7,9 @@ Before using this tool, run the following setup script:
 ./install.sh
 ```
 [//]: # (CI_RUN_UNIX(cd SetupCI; ./install.sh))
+
+To parse the test README.md files, run:
+```
+ ./scripts/run_tests.sh
+```
+[//]: # (CI_RUN_UNIX(./scripts/run_tests.sh))
