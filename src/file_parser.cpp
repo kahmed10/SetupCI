@@ -103,11 +103,11 @@ int main(int argc, char* argv[])
     for (int i = 2; i < argc; i++)
     {
         CICall* caller = NULL;
-        if (!strncmp(argv[i],"unix",5))
+        if (argv[i] == "unix")
             caller = new UnixCall();
-        else if (!strncmp(argv[i],"ubuntu",7))
+        else if (argv[i] == "ubuntu")
             caller = new UbuntuCall();
-        else if (!strncmp(argv[i],"macos",6))
+        else if (argv[i] == "macos")
             caller = new MacOSCall();
         callers.push_back(caller);
     }
