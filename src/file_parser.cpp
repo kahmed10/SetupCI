@@ -1,5 +1,6 @@
 #include "ci_calls.h"
 
+#include <cstring>
 #include <fstream>
 #include <iostream>
 #include <regex>
