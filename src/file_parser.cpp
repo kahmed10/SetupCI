@@ -8,7 +8,7 @@
 #include <unordered_set>
 #include <vector>
 
-#define MD_CLEAN_OFF 9 // supporting MD files for now
+#define MD_CLEAN_OFF 9 // supporting MD files for now, X[_clean.md]
 
 using namespace std;
 

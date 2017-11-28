@@ -15,10 +15,19 @@ void CICall::Search(string str)
         {
             call = sm[1];
         }
+    string appendYes = "yes | ";
 	if (regex_search(call, smParen, regParen))
     {
+        string fullCommand;
         if (smParen[1].str().size() != 0)
-            commands.push_back(smParen[1]);
+        {
+            fullCommand = smParen[1].str();
+            if (str.find("_PROMPT") != string::npos)
+            {
+                fullCommand = appendYes + smParen[1].str();
+            }
+                commands.push_back(fullCommand);
+        }
     }
 }
 
@@ -34,21 +43,21 @@ vector<string> CICall::GetCommands()
 
 UnixCall::UnixCall()
 {
-    regexCI = "\\s*(CI_RUN_UNIX\\(.*\\))";
+    regexCI = "\\s*(CI_RUN_UNIX(_PROMPT)?\\(.*\\))";
     regCI = regex(regexCI);
     identifier = "unix";
 }
 
 UbuntuCall::UbuntuCall()
 {
-	regexCI = "\\s*(CI_RUN_UBUNTU\\(.*\\))";
+	regexCI = "\\s*(CI_RUN_UBUNTU(_PROMPT)?\\(.*\\))";
 	regCI = regex(regexCI);
     identifier = "ubuntu";
 }
 
 MacOSCall::MacOSCall()
 {
-	regexCI = "\\s*(CI_RUN_MACOS\\(.*\\))";
+	regexCI = "\\s*(CI_RUN_MACOS(_PROMPT)?\\(.*\\))";
 	regCI = regex(regexCI);
     identifier = "macos";
 }

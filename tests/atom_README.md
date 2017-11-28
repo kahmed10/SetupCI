@@ -46,8 +46,11 @@ Using [Chocolatey](https://chocolatey.org)? Run `cinst Atom` to install the late
 
 Atom is only available for 64-bit Linux systems.
 [//]: # (CI_RUN_UBUNTU(wget https://github.com/atom/atom/releases/download/v1.22.1/atom-amd64.deb))
-[//]: # (CI_RUN_UBUNTU(sudo dpkg --install atom-amd64.deb))
+[//]: # (CI_RUN_UBUNTU_PROMPT(sudo dpkg --install atom-amd64.deb))
 [//]: # (CI_RUN_UBUNTU(sudo apt-get -f install))
+[//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get install libxss1))
+[//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get install libasound2))
+[//]: # (CI_RUN_UBUNTU(atom))
 1. Download `atom-amd64.deb` from the [Atom releases page](https://github.com/atom/atom/releases/latest).
 2. Run `sudo dpkg --install atom-amd64.deb` on the downloaded package.
 3. Launch Atom using the installed `atom` command.
