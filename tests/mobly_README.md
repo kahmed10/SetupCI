@@ -34,8 +34,9 @@ Mobly tests could run on the following platforms:
   - adb (1.0.36+ recommended)
   - python2.7 or python3.4+
   - python-setuptools
-[//]: # (CI_RUN_UBUNTU(sudo apt-get install adb))
-[//]: # (CI_RUN_UBUNTU(sudo apt-get install python-setuptools))
+[//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get update))
+[//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get install adb))
+[//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get install python-setuptools))
 
 *If you use Python3, use `pip3` and `python3` (or python3.x) accordingly.*
 
@@ -45,8 +46,9 @@ You can install the released package from pip
 ```
 $ pip install mobly
 ```
-[//]: # (CI_RUN_UBUNTU(sudo apt-get install python-pip))
-[//]: # (CI_RUN_UBUNTU(pip install mobly))
+[//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get install python-pip))
+[//]: # (CI_RUN_MACOS_PROMPT(sudo easy_install pip))
+[//]: # (CI_RUN_UNIX_PROMPT(pip install mobly))
 
 or download the source then run `setup.py` to use the bleeding edge:
 

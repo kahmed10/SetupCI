@@ -1,26 +1,34 @@
 #!/bin/bash
 
+
+default_location=northcentralus
+
+# initialize Azure
 if [ $# -ne 1 ]; then
-	echo "Usage: ./azInit.sh [run_commands_file]"
-	exit -1
+    echo "Usage: ./azInit.sh [desired_location]"
+    while true; do
+    read -p "Use default location (northcentralus)?" yn
+    case $yn in
+        [Yy]* ) default_location=$1; break;;
+        [Nn]* ) echo "Supply desired location and rerun script" ; exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 fi
 
 
-# ensure that $USER is referring to the current username
-USER=`whoami`
 
-az vm create --resource-group myResourceGroupVM \
-        --name myVM --image UbuntuLTS --generate-ssh-keys
-az vm start --resource-group myResourceGroupVM --name myVM
-az vm list-ip-addresses --output json > temp.json # used to get dyn. IP addr
-VM_IP=`python get_ip.py temp.json`
-rm temp.json
-scp -o StrictHostKeyChecking=no ${1} $USER@$VM_IP:/home/$USER # copy commands to VM
+#login to Azure if not already done so
+az account show 1> /dev/null
 
-# TODO: create "temp.json" dynamically
-az vm extension set --resource-group myResourceGroupVM \ # run commands on VM
-    --vm-name myVM --name customScript \
-    --publisher Microsoft.Azure.Extensions --settings ./tempCommand.json
-scp ${USER}@${VM_IP}:/home/${USER}/temp.txt . # copy output from VM
-az vm stop --resource-group myResourceGroupVM --name myVM
-az vm delete --resource-group myResourceGroupVM --name myVM --yes
+if [ $? != 0 ];
+then
+    az login
+fi
+
+# check if resource group exists
+ExistsFlag=`az group exists -n myResourceGroupVM`
+if [ $ExistsFlag -ne "true" ]; then
+    az group create -l $default_location -n myResourceGroupVM
+fi
+

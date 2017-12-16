@@ -9,8 +9,9 @@ class CICall
 {
 public:
 	CICall();
-    void Search(string str);
+    string Search(string str);
     string GetIdentifier();
+    void AddCommand(string str);
     vector<string> GetCommands();
 protected:
 	string regexCI;

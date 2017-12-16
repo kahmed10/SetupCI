@@ -1,0 +1,5 @@
+yes | sudo apt-get update
+yes | sudo apt-get install adb
+yes | sudo apt-get install python-setuptools
+yes | sudo apt-get install python-pip
+yes | pip install mobly

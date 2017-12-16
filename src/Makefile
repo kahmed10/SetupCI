@@ -1,5 +1,5 @@
 CXX = clang++
-CXXFLAGS = -c -g -std=c++0x
+CXXFLAGS = -c -O3 -std=c++0x
 LDFLAGS = -o
 OBJ_DIR = ../obj
 OBJS = $(OBJ_DIR)/file_parser.o $(OBJ_DIR)/ci_calls.o

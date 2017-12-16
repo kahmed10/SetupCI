@@ -32,8 +32,18 @@ case "${unixName}" in
         ;;
     *)
         echo "Incompatible OS"
-        exit 1
+        exit -1
 esac
 
-
+# build SetupCI
 make -C src/
+
+# ask for installation
+while true; do
+    read -p "Do you wish to install Azure [y/N]?" yn
+    case $yn in
+        [Yy]* ) $SETUP_CI/scripts/azInstall.sh; break;;
+        [Nn]* ) echo "Azure is required to run VM tests. Otherwise run locally." ; exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done

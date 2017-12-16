@@ -27,7 +27,6 @@ try:
                 comment_line = line.split("[//]: #", 1)[1]
                 if comment_line != "":
                     comment_line_clean = comment_line.strip()
-                    #  print(comment_line_clean)
                     if (comment_line_clean.startswith('(') and
                             comment_line_clean.endswith(')')):
                         clean_lines.append(comment_line_clean[1:-1])

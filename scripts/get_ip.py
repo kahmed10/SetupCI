@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+# DEPRECATED
 # gets the dynamic public IP address of the VM when it is launched
 
 import json

@@ -1,2 +1,0 @@
-simple_readme_commands.txt
-temp.txt

@@ -116,16 +116,35 @@ int main(int argc, char* argv[])
     // go through each API call in file
     vector<string> results;
 
+    for (auto entry: fileList)
+    {
 
+        for (auto caller: callers)
+        {
+            string callerID = caller->GetIdentifier();
+            string tempString = caller->Search(entry);
+            if (tempString != "")
+            {
+                if (callerID == "unix")
+                    // hacky way of getting unix commands into other callers
+                    for (auto callerTemp: callers)
+                    {
+                        string callerTempID = callerTemp->GetIdentifier();
+                        if (callerID != callerTempID)
+                        {
+                            callerTemp->AddCommand(tempString);
+                        }
+                    }
+            }
+        }
+
+    }
     for (auto caller : callers)
     {
-        for (auto entry: fileList)
-        {
-            caller->Search(entry);            
-        }
+        // get results for each OS
         results = caller->GetCommands();
 
-        if (results.size() != 0)
+        if (results.size() != 0 && caller->GetIdentifier() != "unix")
         {
             string outName = setupCIPath + intFilePath + origFile + 
                 "_" + caller->GetIdentifier() + "_commands.txt";
