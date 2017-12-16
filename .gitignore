@@ -1,3 +1,6 @@
 int/*
 obj/*
 bin/*
+scripts/*.txt
+scripts/azTemplate.sh
+scripts/template.json
