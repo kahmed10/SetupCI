@@ -40,7 +40,7 @@ rm -f temp.txt
 # get VM IP (second field in table)
 VM_IP=`az vm list-ip-addresses --output table | grep \
     -w "myVM" | awk '{print $2}'`
-if [ $VM_IP -eq "" ]; then
+if [ "$VM_IP" = "" ]; then
     echo "Error: unable to find VM IP Address"
     exit -1
 fi

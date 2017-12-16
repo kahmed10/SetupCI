@@ -89,6 +89,7 @@ Compiling requires using CMake 2.8.11 or newer. GCC and Clang are both known to 
 [//]: # (CI_RUN_UNIX(cd mgba))
 [//]: # (CI_RUN_UNIX(mkdir build))
 [//]: # (CI_RUN_UNIX(cd build))
+[//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get update))
 [//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get install gcc))
 [//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get install g++))
 [//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get install cmake))

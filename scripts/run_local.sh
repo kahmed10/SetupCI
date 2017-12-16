@@ -9,5 +9,11 @@ if [ $# -ne 2 ]; then
     exit -1
 fi
 
-bash $2 2 &
+bash $1 2>out.txt
+if [ ! -s out.txt ]; then
+    echo "Test $2 passed!"
+    rm out.txt
+else
+    echo "Test $2 failed!"
+fi
 

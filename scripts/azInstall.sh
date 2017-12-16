@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $SETUP_CI -eq "" ]; then
+if [ $SETUP_CI = "" ]; then
     echo "environment variable \$SETUP_CI not found. Please rerun installation"
     exit -1
 fi

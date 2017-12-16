@@ -20,3 +20,24 @@ To parse the test README.md files, run:
  ./scripts/run_tests.sh
 ```
 [//]: # (CI_RUN_UNIX(./scripts/run_tests.sh))
+
+The generated command files can be found under: int/commands/
+
+To test a command list locally, run:
+```
+ ./scripts/run_local.sh
+```
+WARNING: you must make sure that the commands in the file will not harm
+your machine.
+
+To test the VM process, make sure that Azure CLI is installed by running:
+```
+ ./scripts/azInstall.sh
+```
+
+Then, to run a sample README:
+```
+ ./scripts/run_vm_test.sh
+```
+Note: testing on the VM may take several minutes, and even longer depending
+on the duration of the installation.

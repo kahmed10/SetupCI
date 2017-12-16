@@ -127,6 +127,7 @@ To build Node.js:
 [//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get install g++))
 [//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get install gcc))
 [//]: # (CI_RUN_UBUNTU_PROMPT(sudo apt-get install make))
+
 [//]: # (CI_RUN_UNIX(./configure))
 [//]: # (CI_RUN_UNIX(make))
 ```console
