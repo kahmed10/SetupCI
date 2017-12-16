@@ -1,6 +1,0 @@
-git clone https://github.com/TestingResearchIllinois/starts
-cd starts
-yes | sudo apt-get install maven
-yes | sudo apt-get install libsurefire-java
-yes | sudo apt-get install openjdk-8-jdk
-mvn install
