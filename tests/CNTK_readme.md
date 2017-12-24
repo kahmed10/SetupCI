@@ -10,11 +10,11 @@ On Linux:
     sudo wget https://github.com/01org/mkl-dnn/releases/download/v0.11/mklml_lnx_2018.0.1.20171007.tgz
     sudo tar -xzf mklml_lnx_2018.0.1.20171007.tgz -C /usr/local/mklml
 
-[//]: # (CI_RUN_UNIX(sudo mkdir /usr/local/mklml))
-[//]: # (CI_RUN_UBUNTU(wget https://github.com/01org/mkl-dnn/releases/download/v0.11/mklml_lnx_2018.0.1.20171007.tgz))
-[//]: # (CI_RUN_MACOS(curl -L https://github.com/01org/mkl-dnn/releases/download/v0.11/mklml_lnx_2018.0.1.20171007.tgz > mklml_lnx_2018.0.1.20171007.tgz))
-[//]: # (CI_RUN_UNIX(sudo tar -xzf mklml_lnx_2018.0.1.20171007.tgz -C /usr/local/mklml))
-On Windows:
+<!---[//]: # (CI_RUN_UNIX(sudo mkdir /usr/local/mklml))
+[//]: # (CI_RUN_UBUNTU(wget https://github.com/01org/mkl-dnn/releases/download/v0.11/mklml_lnx_2018.0.1.20171007.tgz))--->
+<!---[//]: # (CI_RUN_MACOS(curl -L https://github.com/01org/mkl-dnn/releases/download/v0.11/mklml_lnx_2018.0.1.20171007.tgz > mklml_lnx_2018.0.1.20171007.tgz))--->
+<!---[//]: # (CI_RUN_UNIX(sudo tar -xzf mklml_lnx_2018.0.1.20171007.tgz -C /usr/local/mklml))
+On Windows:--->
 
     Create a directory on your machine to hold MKLML, e.g. mkdir c:\local\mklml
     Download the file [mklml_win_2018.0.1.20171007.zip](https://github.com/01org/mkl-dnn/releases/download/v0.11/mklml_win_2018.0.1.20171007.zip).
