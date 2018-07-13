@@ -45,17 +45,36 @@ on the duration of the installation.
 # Documentation
 SetupCI is comprised of the following markdown file format:
 
-**`[//]`: # (API_CALL(COMMAND))** - Begin the line with this syntax so that
+Begin the line with this syntax so that
 comments are not rendered on project home screens. "COMMAND" is the desired
-command to be executed.
+command to be executed. 
 
-**`[//]`: # (CI_RUN_{OS}(COMMAND))** - A basic command requiring no additional
+```
+[//]: # (API_CALL(COMMAND))
+```
+
+Note: GitHub's renderer does not hide these commands
+by default, so insert these commands within: 
+```
+<!-- --> 
+```
+
+A basic command requiring no additional
 instructions. The currently supported "OS" values are: UNIX, UBUNTU, and
 MACOS. UNIX is a generic call that will also be placed in the command lists
 of all Unix-based operating systems.
 
-**`[//]`: # (CI_RUN_{OS}_PROMPT(COMMAND))** - A command that requires the user
-to prompt "yes"
+```
+[//]: # (CI_RUN_{OS}(COMMAND)) 
+```
+A command that requires the user to prompt "yes"
 
-**`[//]`: # (CI_RUN_{OS}_PROMPT_NO(COMMAND))** - A command that requires the user
-to prompt "no"
+```
+[//]: # (CI_RUN_{OS}_PROMPT(COMMAND))
+```
+A command that requires the user to prompt "no"
+
+```
+[//]: # (CI_RUN_{OS}_PROMPT_NO(COMMAND))
+```
+
